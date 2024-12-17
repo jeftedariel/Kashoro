@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'entities/user_session.dart';
 
 void main() {
 
