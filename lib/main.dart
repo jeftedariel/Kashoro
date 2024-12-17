@@ -33,25 +33,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      toastification.show(
-	  context: context,
-	  type: ToastificationType.success,
-	  style: ToastificationStyle.flatColored,
-	  title: Text("Justin"),
-	  description: Text("Engripado"),
-	  alignment: Alignment.topLeft,
-	  autoCloseDuration: const Duration(seconds: 3),
-	  showProgressBar: true,
-	  dragToClose: true,
-	  applyBlurEffect: true,
-	);
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,15 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisSpacing: 8, // Espaciado vertical
         childAspectRatio: 2, // Relación de aspecto de cada tarjeta
         children: const [
-          InfoCard(icon: Icons.account_balance, title: "My Balance", amount: "\$10")
+          InfoCard(icon: Icons.account_balance, title: "My Balance", amount: "\$10"),
+          InfoCard(icon: Icons.receipt_long, title: "Expense", amount: "\$5"),
+          InfoCard(icon: Icons.savings, title: "Total Savings", amount: "\$53"),  
+          InfoCard(icon: Icons.trending_up, title: "Incomes", amount: "\$20")
         ]
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      
     );
   }
 }
