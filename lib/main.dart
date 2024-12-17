@@ -3,13 +3,20 @@ import 'package:toastification/toastification.dart';
 import 'Widgets/balance_widget.dart';
 import 'Widgets/header.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'package:flutter_translate/flutter_translate.dart';
+
+void main() async{
+  var delegate = await LocalizationDelegate.create(
+          fallbackLocale: 'en_US',
+          supportedLocales: ['en_US']);
+
+  runApp(LocalizedApp(delegate, MyApp()));
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+  
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

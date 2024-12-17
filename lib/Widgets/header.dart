@@ -26,7 +26,7 @@ class CustomHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                "Welcome Back,",
+                "Welcome Back 👋,",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
