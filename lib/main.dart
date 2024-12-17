@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:toastification/toastification.dart';
+import 'Widgets/balance_widget.dart';
 void main() {
 
   runApp(const MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Kashoro',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyanAccent),
         useMaterial3: true,
@@ -36,6 +37,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
+      toastification.show(
+	  context: context,
+	  type: ToastificationType.success,
+	  style: ToastificationStyle.flatColored,
+	  title: Text("Justin"),
+	  description: Text("Engripado"),
+	  alignment: Alignment.topLeft,
+	  autoCloseDuration: const Duration(seconds: 3),
+	  showProgressBar: true,
+	  dragToClose: true,
+	  applyBlurEffect: true,
+	);
       _counter++;
     });
   }
@@ -43,22 +56,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        child: GridView.count(
+        crossAxisCount: 2, // 2 columnas
+        crossAxisSpacing: 8, // Espaciado horizontal
+        mainAxisSpacing: 8, // Espaciado vertical
+        childAspectRatio: 2, // Relación de aspecto de cada tarjeta
+        children: const [
+          InfoCard(icon: Icons.account_balance, title: "My Balance", amount: "\$10")
+        ]
         ),
       ),
       floatingActionButton: FloatingActionButton(
