@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
 import 'Widgets/balance_widget.dart';
-void main() {
+import 'Widgets/header.dart';
 
+void main() {
   runApp(const MyApp());
 }
 
@@ -33,25 +34,40 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: GridView.count(
-        crossAxisCount: 2, // 2 columnas
-        crossAxisSpacing: 8, // Espaciado horizontal
-        mainAxisSpacing: 8, // Espaciado vertical
-        childAspectRatio: 2, // Relación de aspecto de cada tarjeta
-        children: const [
-          InfoCard(icon: Icons.account_balance, title: "My Balance", amount: "\$10"),
-          InfoCard(icon: Icons.receipt_long, title: "Expense", amount: "\$5"),
-          InfoCard(icon: Icons.savings, title: "Total Savings", amount: "\$53"),  
-          InfoCard(icon: Icons.trending_up, title: "Incomes", amount: "\$20")
-        ]
-        ),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(100), // Altura personalizada
+        child: CustomHeader(),
       ),
-      
+      body: Column(
+        children: [
+          SizedBox(height: 10),
+          Flexible(
+            child: GridView.count(
+              crossAxisCount: 2,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8,
+              childAspectRatio: 2,
+              children: const [
+                InfoCard(
+                    icon: Icons.account_balance,
+                    title: "My Balance",
+                    amount: "\$10"),
+                InfoCard(
+                    icon: Icons.receipt_long, title: "Expense", amount: "\$5"),
+                InfoCard(
+                    icon: Icons.savings,
+                    title: "Total Savings",
+                    amount: "\$53"),
+                InfoCard(
+                    icon: Icons.trending_up, title: "Incomes", amount: "\$20")
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
